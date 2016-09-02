@@ -1,0 +1,14 @@
+---
+
+- name: iptables rules are applied uploaded
+  template: 
+    src: iptables_rules.sh.j2
+    dest: '{{firewall_rules_upload_dir}}/iptables_rules.sh'
+    mode: 0750 
+    owner: root
+    group: root
+  register: iptables_rules_updated
+
+- name: iptables rules are applied
+  shell: '{{firewall_rules_upload_dir}}/iptables_rules.sh'
+  register: iptables_rules_applied

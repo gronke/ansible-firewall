@@ -1,0 +1,33 @@
+---
+
+firewall_policies:
+  input: DROP
+  output: ACCEPT
+  forward: DROP
+
+firewall_allow_ping: true
+
+firewall_defaults:
+  ip_versions:
+    - IPv6
+    - IPv4
+  protocols:
+    - tcp
+    - udp
+
+default_firewall_rules:
+
+    - chain: INPUT
+      protocols: 
+        - tcp
+      ports: 
+        - 22
+      action: ACCEPT
+
+    - chain: INPUT
+      state: ESTABLISHED,RELATED
+      action: ACCEPT
+
+firewall_rules: '{{firewall_rules | default([])}}'
+
+firewall_rules_upload_dir: '/tmp/firewall'

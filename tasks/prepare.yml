@@ -1,0 +1,10 @@
+---
+
+- name: firewall rules upload dir exists
+  file:
+    path: '{{firewall_rules_upload_dir}}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0770
+    force: true

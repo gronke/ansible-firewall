@@ -1,0 +1,11 @@
+---
+
+- name: iptables-persistent package is installed
+  apt:
+    name: iptables-persistent
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+
+- shell: iptables-save > /etc/iptables/rules.v4
+- shell: ip6tables-save > /etc/iptables/rules.v6

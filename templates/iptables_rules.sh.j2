@@ -1,0 +1,17 @@
+#!/bin/sh
+{% for rule in (default_firewall_rules + firewall_rules) %}
+{% for protocol in (rule.protocols | default(['any'])) %}
+{% for ip_version in ip_versions | default(firewall_defaults.ip_versions) %}
+
+{% if ip_version == 'IPv6' %}ip6tables{% elif ip_version == 'IPv4' %}iptables{% endif %} \
+  -A {{rule.chain | default(firewall_defaults.chain)}} \
+{% if (protocol is defined) and (protocol != 'any') %}
+  -p {{protocol}}{% if (rule.ports is defined) %} {% if (rule.ports | length) == 1 %}--dport {{rule.ports[0]}}{% else %}-m multiport --dports {{rule.ports | join(',')}}{% endif %}{% endif %} \
+{% endif %}
+{% if rule.state is defined %}
+  -m state --state {{rule.state}} \
+{% endif %}
+  -j {{rule.action | default('ACCEPT')}}
+{% endfor %}
+{% endfor %}
+{% endfor %}

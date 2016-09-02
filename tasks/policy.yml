@@ -1,0 +1,8 @@
+---
+
+- name: default policies
+  shell: iptables -P {{item | upper}} {{ firewall_policies[item] | default('ACCEPT') }}
+  with_items:
+    - input
+    - output
+    - forward

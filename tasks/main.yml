@@ -1,0 +1,8 @@
+---
+
+- include: prepare.yml
+- include: flush.yml
+- include: icmp.yml
+- include: rules.yml
+- include: policy.yml
+- include: persist.yml

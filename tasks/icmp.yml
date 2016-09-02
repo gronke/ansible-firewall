@@ -1,0 +1,5 @@
+---
+
+- name: apply icmp rules preset for IPv4 and IPv6
+  script: files/enable-icmp.sh
+  when: firewall_allow_ping

@@ -1,0 +1,4 @@
+---
+
+- name: flush iptables rules
+  script: files/flush-iptables.sh
