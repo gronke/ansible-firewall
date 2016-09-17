@@ -1,0 +1,24 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Stefan Grönke
+  description: Simple iptables wrapper to create persistent rules for IPv4 and IPv6
+  company: gronke.org
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+    - name: Debian
+      versions:
+        - jessie
+        - wheezy
+    - name: Ubuntu
+      versions:
+        - trusty
+  galaxy_tags:
+    - firewall
+    - iptables
+    - security
+    - IPv4
+    - IPv6
+

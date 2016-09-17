@@ -1,7 +1,7 @@
 ansible-firewall
 ================
 
-Simple iptables wrapper role to harden microservices.
+Simple iptables wrapper to create persistent rules for IPv4 and IPv6
 
 ### firewall_rules
 A list of firewall rules.
