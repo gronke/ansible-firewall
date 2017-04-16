@@ -12,6 +12,8 @@ A list of firewall rules.
 | protocols     | no        | [tcp, udp]    | - tcp<br>- udp                          |
 | ip_versions   | no        | [IPv4, IPv6]  | - IPv4<br>- IPv6                        |
 | action        | no        | `ACCEPT`      | - ACCEPT<br>- DROP<br>- REJECT          |
+| sources       | no        |               | - eg. `127.0.0.1` or `192.168.0.0/24`   |
+| destinations  | no        |               | - eg. `127.0.0.1` or `192.168.0.0/24`   |
 
 
 ### firewall_policies
