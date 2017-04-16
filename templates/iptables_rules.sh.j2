@@ -11,6 +11,12 @@
 {% if rule.state is defined %}
   -m state --state {{rule.state}} \
 {% endif %}
+{% if rule.sources is defined %}
+  -s {{rule.sources | join(',')}} \
+{% endif %}
+{% if rule.destinations is defined %}
+  -d {{rule.destinations | join(',')}} \
+{% endif %}
   -j {{rule.action | default('ACCEPT')}}
 {% endfor %}
 {% endfor %}
