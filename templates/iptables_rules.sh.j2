@@ -1,7 +1,7 @@
 #!/bin/sh
 {% for rule in (default_firewall_rules + firewall_rules) %}
 {% for protocol in (rule.protocols | default(['any'])) %}
-{% for ip_version in ip_versions | default(firewall_defaults.ip_versions) %}
+{% for ip_version in rule.ip_versions | default(firewall_defaults.ip_versions) %}
 
 {% if ip_version == 'IPv6' %}ip6tables{% elif ip_version == 'IPv4' %}iptables{% endif %} \
   -A {{rule.chain | default(firewall_defaults.chain)}} \
