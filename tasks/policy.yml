@@ -6,3 +6,10 @@
     - input
     - output
     - forward
+
+- name: default policies
+  shell: ip6tables -P {{item | upper}} {{ firewall_policies[item] | default('ACCEPT') }}
+  with_items:
+    - input
+    - output
+    - forward
